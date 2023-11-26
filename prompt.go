@@ -14,6 +14,12 @@ type InputOption struct {
 	IsDefault   bool
 }
 
+var PromptInstance = NewPrompt()
+
+func NewPrompt() *Prompt {
+	return &Prompt{}
+}
+
 func (p *Prompt) Input(
 	inputTip string,
 	options []InputOption,
