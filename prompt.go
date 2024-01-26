@@ -67,14 +67,15 @@ func (p *Prompt) Input(
 	)
 	//pInstance.Run()
 	inputText = pInstance.Input()
-	if inputText == "exit" {
-		return inputText, true
-	}
 
 	// recover
 	err = termios.Tcsetattr(uintptr(fd), termios.TCSANOW, originalTermios)
 	if err != nil {
 		panic(err)
+	}
+
+	if inputText == "exit" {
+		return inputText, true
 	}
 
 	return inputText, false
